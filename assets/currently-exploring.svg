@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title">
+<title id="title">Currently Exploring</title>
+<rect x="1" y="1" width="758" height="468" rx="12" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>
+<text x="80" y="80" fill="#2f81f7" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="36" font-weight="700">Currently Exploring</text>
+<path d="M104 145V365" stroke="#d0d7de" stroke-width="2" stroke-dasharray="4 8"/>
+<circle cx="104" cy="170" r="15" fill="#ffffff" stroke="#f34b7d" stroke-width="7"/>
+<circle cx="104" cy="170" r="5" fill="#f34b7d"/>
+<text x="145" y="164" fill="#24292f" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="21" font-weight="700">ANDROID SYSTEMS</text>
+<text x="145" y="195" fill="#57606a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Runtime behavior &amp; automation</text>
+<circle cx="104" cy="265" r="15" fill="#ffffff" stroke="#a97bff" stroke-width="7"/>
+<circle cx="104" cy="265" r="5" fill="#a97bff"/>
+<text x="145" y="259" fill="#24292f" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="21" font-weight="700">PLUGIN RUNTIME</text>
+<text x="145" y="290" fill="#57606a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Dynamic loading &amp; delivery</text>
+<circle cx="104" cy="360" r="15" fill="#ffffff" stroke="#3572a5" stroke-width="7"/>
+<circle cx="104" cy="360" r="5" fill="#3572a5"/>
+<text x="145" y="354" fill="#24292f" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="21" font-weight="700">AGENT SKILLS</text>
+<text x="145" y="385" fill="#57606a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Structured, testable workflows</text>
+</svg>

@@ -7,11 +7,13 @@ import json
 import math
 import os
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 
 USERNAME = "ultralan"
 OUTPUT_PATH = Path("assets/top-languages.svg")
+EXPLORING_OUTPUT_PATH = Path("assets/currently-exploring.svg")
 LANGUAGE_COLORS = {
     "Java": "#b07219",
     "Kotlin": "#A97BFF",
@@ -110,6 +112,41 @@ def render_card(languages: dict[str, int]) -> str:
     return "\n".join(parts) + "\n"
 
 
+def render_exploring_card() -> str:
+    items = (
+        ("#f34b7d", "ANDROID SYSTEMS", "Runtime behavior & automation"),
+        ("#a97bff", "PLUGIN RUNTIME", "Dynamic loading & delivery"),
+        ("#3572a5", "AGENT SKILLS", "Structured, testable workflows"),
+    )
+    parts = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title">',
+        '<title id="title">Currently Exploring</title>',
+        '<rect x="1" y="1" width="758" height="468" rx="12" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>',
+        '<text x="80" y="80" fill="#2f81f7" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="36" font-weight="700">Currently Exploring</text>',
+        '<path d="M104 145V365" stroke="#d0d7de" stroke-width="2" stroke-dasharray="4 8"/>',
+    ]
+    for index, (color, title, subtitle) in enumerate(items):
+        y = 170 + index * 95
+        safe_title = html.escape(title)
+        safe_subtitle = html.escape(subtitle)
+        parts.extend(
+            [
+                f'<circle cx="104" cy="{y}" r="15" fill="#ffffff" stroke="{color}" stroke-width="7"/>',
+                f'<circle cx="104" cy="{y}" r="5" fill="{color}"/>',
+                f'<text x="145" y="{y - 6}" fill="#24292f" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="21" font-weight="700">{safe_title}</text>',
+                f'<text x="145" y="{y + 25}" fill="#57606a" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">{safe_subtitle}</text>',
+            ]
+        )
+    parts.append("</svg>")
+    return "\n".join(parts) + "\n"
+
+
 if __name__ == "__main__":
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(render_card(collect_languages()), encoding="utf-8")
+    try:
+        OUTPUT_PATH.write_text(render_card(collect_languages()), encoding="utf-8")
+    except (HTTPError, URLError) as error:
+        if not OUTPUT_PATH.exists():
+            raise
+        print(f"语言统计请求失败，保留上一版卡片：{error}")
+    EXPLORING_OUTPUT_PATH.write_text(render_exploring_card(), encoding="utf-8")

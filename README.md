@@ -1,3 +1,3 @@
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ultralan&hide_border=false" alt="Most Used Languages" />
+  <img src="./assets/top-languages.svg" width="760" alt="Most Used Languages" />
 </div>
